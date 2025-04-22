@@ -3,11 +3,14 @@ import yfinance as yf
 import plotly.graph_objects as go
 import ollama
 import streamlit as st
+from dotenv import load_dotenv
 
-# st.set_page_config(layout="wide")
 
 
 from openai import OpenAI
+
+
+load_dotenv()
 
 
 
@@ -15,7 +18,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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"
+    api_key="OPEN_ROUTER_API_KEY"
 )
 
 # Set up aplikasi Streamlit
@@ -149,7 +152,7 @@ if "crypto_data" in st.session_state:
                               Berikan rekomendasi di awal, lalu jelaskan alasannya secara singkat.""",
             }]
 
-            model_name = "thudm/glm-4-32b:free"  # Bisa ganti ke "gemma3:4b" jika ingin model lebih besar
+            model_name = "thudm/glm-z1-32b:free"  # Bisa ganti ke "gemma3:4b" jika ingin model lebih besar
 
             try:
                 # Jalankan AI untuk analisis teknikal
